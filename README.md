@@ -8,13 +8,13 @@ Requirement: Java8+,Postgres, pgAdmin 4 (usually included in postgres download)
 
 Download / install Postgres (preferably with pgAdmin 4)
 
-### Start Postgres (run the following from cmd):
-
+### Start Postgres:
+  #### (run the following from cmd)
   cd 'C:\Program Files\PostgreSQL\10\bin'
   
   pg_ctl start -D 'C:\Users\<USER>\PGData'
   
-Start pgAdmin 4:
+#### Start pgAdmin 4:
 
   create server
   
