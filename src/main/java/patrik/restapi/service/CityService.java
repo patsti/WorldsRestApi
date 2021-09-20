@@ -9,7 +9,6 @@ import patrik.restapi.repository.CityRepository;
 import patrik.restapi.utils.WorldConverter;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
@@ -22,58 +21,57 @@ public class CityService {
         this.cityRepository = cityRepository;
     }
 
-    public String getCities() {
-//        return cityRepository.findCitiesAndLanguages("AFG");
+    public ResponseObject getAllCities() {
         List<CityPO> cities = cityRepository.findAll();
         ResponseObject responseObject = new ResponseObject();
         List<City> cityList = WorldConverter.convertCityPoListToCityList(cities);
         responseObject.setCityList(cityList);
-        try {
-            return CityService.toString(responseObject);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "";
+
+        return responseObject;
     }
 
     public List<CityPO> getCitiesList() {
+
         return cityRepository.findAll();
     }
 
     public List<CityPO> getCityNotInCountryCode(String code) {
+
         return cityRepository.findCitiesNotCountrycode(code);
     }
-    public String getCityByCountryCode(String code) {
-        /*List<CityPO> citiesPO = cityRepository.findCitiesAndLanguages(code);
+
+    public ResponseObject getCityByCountryCode(String code) {
+        List<CityPO> cities = cityRepository.findCitiesWithCountrycode(code);
         ResponseObject responseObject = new ResponseObject();
-        List<City> cityList = WorldConverter.convertCityPoListToCityList(citiesPO);
+        List<City> cityList = WorldConverter.convertCityPoListToCityList(cities);
         responseObject.setCityList(cityList);
 
-        try {
-            return CityService.toString(responseObject);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-        return "";
+        return responseObject;
     }
 
-    /** Read the object from Base64 string. */
-    private static Object fromString( String s ) throws IOException ,
+    /**
+     * Read the object from Base64 string.
+     */
+    private static Object fromString(String s) throws IOException,
             ClassNotFoundException {
-        byte [] data = Base64.getDecoder().decode( s );
+        byte[] data = Base64.getDecoder().decode(s);
         ObjectInputStream ois = new ObjectInputStream(
-                new ByteArrayInputStream(  data ) );
-        Object o  = ois.readObject();
+                new ByteArrayInputStream(data));
+        Object o = ois.readObject();
         ois.close();
+
         return o;
     }
 
-    /** Write the object to a Base64 string. */
-    private static String toString( Serializable o ) throws IOException {
+    /**
+     * Write the object to a Base64 string.
+     */
+    private static String toString(Serializable o) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ObjectOutputStream oos = new ObjectOutputStream( baos );
-        oos.writeObject( o );
+        ObjectOutputStream oos = new ObjectOutputStream(baos);
+        oos.writeObject(o);
         oos.close();
+
         return Base64.getEncoder().encodeToString(baos.toByteArray());
     }
 }

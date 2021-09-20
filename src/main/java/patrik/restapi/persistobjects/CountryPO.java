@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name="CountryPO.findCountryByCode",
+        @NamedQuery(name = "CountryPO.findCountryByCode",
                 query = "SELECT c FROM CountryPO c WHERE c.code = :countrycode")
 })
 @Table(name = "country")

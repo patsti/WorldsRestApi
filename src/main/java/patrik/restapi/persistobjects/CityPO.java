@@ -8,7 +8,9 @@ import java.io.Serializable;
         @NamedQuery(name="CityPO.findAllOrderedByNameDescending",
             query = "SELECT c FROM CityPO c ORDER BY c.name DESC"),
         @NamedQuery(name="CityPO.findCitiesNotCountrycode",
-                query = "SELECT c FROM CityPO c WHERE c.countrycode != :countrycode")
+                query = "SELECT c FROM CityPO c WHERE c.countrycode != :countrycode"),
+        @NamedQuery(name="CityPO.findCitiesWithCountrycode",
+                query = "SELECT c FROM CityPO c WHERE c.countrycode = :countrycode")
 })
 @Table(name = "city")
 public class CityPO implements Serializable{

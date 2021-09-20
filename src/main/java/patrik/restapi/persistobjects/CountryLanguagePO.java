@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "CountryLanguagePO.findCountryLanguageByCountrycode",
+                query = "SELECT c FROM CountryLanguagePO c WHERE c.countrycode = :countrycode AND c.isofficial = 'T'")
+})
 @Table(name = "countrylanguage")
 public class CountryLanguagePO implements Serializable {
     private final static long serialVersionUID = 1339;

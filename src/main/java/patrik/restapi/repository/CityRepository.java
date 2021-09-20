@@ -11,5 +11,8 @@ import java.util.List;
 public interface CityRepository extends JpaRepository<CityPO, Long> {
 
     List<CityPO> findAllOrderedByNameDescending();
+
     List<CityPO> findCitiesNotCountrycode(@Param("countrycode") String countrycode);
+
+    List<CityPO> findCitiesWithCountrycode(@Param("countrycode") String countrycode);
 }

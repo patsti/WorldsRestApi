@@ -7,14 +7,12 @@ import patrik.restapi.persistobjects.CityPO;
 import patrik.restapi.persistobjects.CountryLanguagePO;
 import patrik.restapi.persistobjects.CountryPO;
 
-import java.io.*;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 public class WorldConverter {
 
-    public static List<City> convertCityPoListToCityList (List<CityPO> cityPOList) {
+    public static List<City> convertCityPoListToCityList(List<CityPO> cityPOList) {
         List<City> cityList = new ArrayList<>();
         for (CityPO cityPo : cityPOList) {
             cityList.add(cityPoToCity(cityPo));
@@ -22,7 +20,7 @@ public class WorldConverter {
         return cityList;
     }
 
-    public static List<Country> convertCountryPoListToCountryList (List<CountryPO> countryPOList) {
+    public static List<Country> convertCountryPoListToCountryList(List<CountryPO> countryPOList) {
         List<Country> countryList = new ArrayList<>();
         for (CountryPO countryPo : countryPOList) {
             countryList.add(countryPoToCountry(countryPo));
@@ -30,7 +28,7 @@ public class WorldConverter {
         return countryList;
     }
 
-    public static List<CountryLanguage> convertCountryLanguagePoListToCountryLanguageList (List<CountryLanguagePO> countryLanguagePOList) {
+    public static List<CountryLanguage> convertCountryLanguagePoListToCountryLanguageList(List<CountryLanguagePO> countryLanguagePOList) {
         List<CountryLanguage> countryLanguageList = new ArrayList<>();
         for (CountryLanguagePO countryLanguagePO : countryLanguagePOList) {
             countryLanguageList.add(countryLanguagePoToCountryLanguage(countryLanguagePO));

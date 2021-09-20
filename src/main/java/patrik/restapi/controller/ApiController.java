@@ -33,14 +33,8 @@ public class ApiController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/", produces = "application/json")
     public String getHelpText() throws Exception {
-        String cities = null;
-        try {
-            cities = cityService.getCities();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
-        return cities;
+        return Utils.getHelpText();
     }
 
 
@@ -52,28 +46,29 @@ public class ApiController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/api/city", produces = "application/json")
-    public String getCity(@RequestParam("countrycode") String countrycode) throws Exception {
+    public String getCity(@RequestParam(value = "countrycode", required = false, defaultValue = "") String countrycode) throws Exception {
+        if (countrycode.isEmpty()) {
+            return Utils.serialize(cityService.getAllCities());
+        }
 
-        return cityService.getCityByCountryCode(countrycode);
+        return Utils.serialize(cityService.getCityByCountryCode(countrycode));
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/api/countries", produces = "application/json")
-    public String getCountries(@RequestParam("countrycode") String countrycode) throws Exception {
-        ResponseObject responseObject = countryService.getAllCountries();
+    public String getCountries(@RequestParam(value = "countrycode", required = false, defaultValue = "") String countrycode) throws Exception {
+        if (countrycode.isEmpty()) {
+            return Utils.serialize(countryService.getAllCountries());
+        }
 
-        return Utils.serialize(responseObject);
+        return Utils.serialize(countryService.getCountryByCountryCode(countrycode));
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/api/countrylanguages", produces = "application/json")
-    public String getCountryLanguages(@RequestParam(value="countrycode", required = false, defaultValue = "") String countrycode) throws Exception {
-        ResponseObject responseObject = countryLanguageService.getAllCountryLanguages();
+    public String getCountryLanguages(@RequestParam(value = "countrycode", required = false, defaultValue = "") String countrycode) throws Exception {
+        if (countrycode.isEmpty()) {
+            return Utils.serialize(countryLanguageService.getAllCountryLanguages());
+        }
 
-        return Utils.serialize(responseObject);
-    }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/api/country-by-code", produces = "application/json")
-    public String getCountryByCode(@RequestParam("countrycode") String countrycode) throws Exception {
-
-        return countryService.getCountryByCountryCode(countrycode);
+        return Utils.serialize(countryLanguageService.getLanguagesByCountryCode(countrycode));
     }
 }
