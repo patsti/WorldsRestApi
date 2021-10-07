@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import patrik.restapi.objects.GameResponseObject;
-import patrik.restapi.objects.ResponseObject;
 import patrik.restapi.service.CityService;
 import patrik.restapi.service.CountryLanguageService;
 import patrik.restapi.service.CountryService;
@@ -32,7 +31,7 @@ public class ApiController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/", produces = "application/json")
-    public String getHelpText() throws Exception {
+    public String getHelpText() {
 
         return Utils.getHelpText();
     }

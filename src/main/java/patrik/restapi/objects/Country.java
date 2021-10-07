@@ -1,12 +1,8 @@
 package patrik.restapi.objects;
 
-import patrik.restapi.persistobjects.CountryLanguagePO;
-import patrik.restapi.persistobjects.CountryPO;
-
 import java.io.Serializable;
 
 public class Country extends CompareAbstract implements Serializable {
-    String name;
     String continent;
     String region;
     Float surfacearea;
@@ -16,14 +12,6 @@ public class Country extends CompareAbstract implements Serializable {
     Float gnp;
     Float gnpold;
     String localname;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getContinent() {
         return continent;

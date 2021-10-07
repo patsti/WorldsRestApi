@@ -17,6 +17,7 @@ public class WorldConverter {
         for (CityPO cityPo : cityPOList) {
             cityList.add(cityPoToCity(cityPo));
         }
+
         return cityList;
     }
 
@@ -25,6 +26,7 @@ public class WorldConverter {
         for (CountryPO countryPo : countryPOList) {
             countryList.add(countryPoToCountry(countryPo));
         }
+
         return countryList;
     }
 
@@ -33,6 +35,7 @@ public class WorldConverter {
         for (CountryLanguagePO countryLanguagePO : countryLanguagePOList) {
             countryLanguageList.add(countryLanguagePoToCountryLanguage(countryLanguagePO));
         }
+
         return countryLanguageList;
     }
 
@@ -43,6 +46,7 @@ public class WorldConverter {
         city.setName(cityPO.getName());
         city.setDistrict(cityPO.getDistrict());
         city.setPopulation(cityPO.getPopulation());
+
         return city;
     }
 
@@ -59,15 +63,17 @@ public class WorldConverter {
         country.setGnp(countryPO.getGnp());
         country.setGnpold(countryPO.getGnpold());
         country.setLocalname(countryPO.getLocalname());
+
         return country;
     }
 
     public static CountryLanguage countryLanguagePoToCountryLanguage(CountryLanguagePO countryLanguagePO) {
         CountryLanguage countryLanguage = new CountryLanguage();
         countryLanguage.setCountrycode(countryLanguagePO.getCountrycode());
-        countryLanguage.setLanguage(countryLanguagePO.getLanguage());
+        countryLanguage.setName(countryLanguagePO.getLanguage());
         countryLanguage.setIsofficial(countryLanguagePO.getIsofficial());
         countryLanguage.setPercentage(countryLanguagePO.getPercentage());
+
         return countryLanguage;
     }
 }

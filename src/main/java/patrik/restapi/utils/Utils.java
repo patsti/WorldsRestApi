@@ -16,6 +16,7 @@ public abstract class Utils {
                 new ByteArrayInputStream(data));
         Object o = ois.readObject();
         ois.close();
+
         return o;
     }
 
@@ -27,6 +28,7 @@ public abstract class Utils {
         ObjectOutputStream oos = new ObjectOutputStream(baos);
         oos.writeObject(o);
         oos.close();
+
         return Base64.getEncoder().encodeToString(baos.toByteArray());
     }
 

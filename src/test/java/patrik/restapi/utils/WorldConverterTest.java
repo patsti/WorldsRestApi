@@ -48,7 +48,7 @@ public class WorldConverterTest extends TestCase {
 
     public void testCountryLanguagePoToCountryLanguage() {
         CountryLanguage countryLanguage = WorldConverter.countryLanguagePoToCountryLanguage(countryLanguagePO);
-        assertEquals(countryLanguagePO.getLanguage(), countryLanguage.getLanguage());
+        assertEquals(countryLanguagePO.getLanguage(), countryLanguage.getName());
         assertEquals(countryLanguagePO.getCountrycode(), countryLanguage.getCountrycode());
     }
 }

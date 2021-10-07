@@ -24,6 +24,7 @@ public class CountryLanguageService {
         List<CountryLanguage> countryLanguageList = WorldConverter.convertCountryLanguagePoListToCountryLanguageList(countryLanguagePOList);
         ResponseObject responseObject = new ResponseObject();
         responseObject.setCountryLanguageList(countryLanguageList);
+
         return responseObject;
     }
 
@@ -32,6 +33,7 @@ public class CountryLanguageService {
         ResponseObject responseObject = new ResponseObject();
         List<CountryLanguage> cityList = WorldConverter.convertCountryLanguagePoListToCountryLanguageList(countryLanguagePOList);
         responseObject.setCountryLanguageList(cityList);
+
         return responseObject;
     }
 }

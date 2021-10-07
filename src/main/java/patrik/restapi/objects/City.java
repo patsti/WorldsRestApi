@@ -1,30 +1,20 @@
 package patrik.restapi.objects;
 
-import patrik.restapi.persistobjects.CityPO;
-
-import javax.persistence.*;
-import java.io.IOException;
-import java.io.ObjectStreamClass;
 import java.io.Serializable;
 
-public class City extends CompareAbstract implements Serializable  {
+public class City extends CompareAbstract implements Serializable {
     Integer id;
-    private String name;
     private String district;
     private Integer population;
 
     public int getId() {
         return id;
     }
-    public String getName() {
-        return this.name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
+
     public String getDistrict() {
         return district;
     }
+
     public int getPopulation() {
         return population;
     }
@@ -42,7 +32,7 @@ public class City extends CompareAbstract implements Serializable  {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return name;
     }
 
